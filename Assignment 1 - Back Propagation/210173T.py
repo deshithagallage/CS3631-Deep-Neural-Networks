@@ -157,9 +157,6 @@ if __name__ == "__main__":
     A, caches = forward_propagation(X, L, parameters)
     gradients = backward_propagation(X, Y, L, caches)
 
-    print("A:", A)
-    # print("Gradients:", gradients)
-
     # Write the gradients to a CSV file
     for i in range(L):
         with open("dw.csv", 'a+', newline='') as f:
@@ -167,8 +164,6 @@ if __name__ == "__main__":
             write.writerows(gradients[f"dW{i + 1}"])
         f.close()
 
+    # Write the biases to a CSV file
     db_data = [gradients[f"db{i + 1}"] for i in range(L)]
-    write_csv("db.csv", db_data)
-
-    print("Done & Dusted!")
-    
+    write_csv("db.csv", db_data)    

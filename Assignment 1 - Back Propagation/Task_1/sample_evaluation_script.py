@@ -3,12 +3,12 @@ import numpy as np
 import csv
 import zipfile
 
-ID = '190123A'
+ID = '210173T'  # change this to your ID
 zip_ref = zipfile.ZipFile(ID+'.zip', 'r')
 zip_ref.extractall('.')
 zip_ref.close()
 
-truth_path = 'the_truth_path' #change truth_path = 'b' for verification
+truth_path = 'Task_1/a'  # change this to the path of the truth directory
 file_name = ['Task_1/dw.csv', 'Task_1/db.csv']
 true_file = ['true-dw.csv', 'true-db.csv']
 threshold = 0.05
@@ -36,8 +36,8 @@ def compare(sub, true, threshold=0):
     if not len(sub)==len(true):
         return 0
     for i in range(len(sub)):
-        l0 = np.array(sub[i]).astype(np.float)
-        l1 = np.array(true[i]).astype(np.float)
+        l0 = np.array(sub[i]).astype(np.float32)
+        l1 = np.array(true[i]).astype(np.float32)
         if not len(l0)==len(l1):
             return 0
         else:
